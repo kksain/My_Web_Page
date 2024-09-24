@@ -6,10 +6,22 @@ from .models import Submission
 from .forms import UserForm
 
 
-
 def home(request):
+    quotes = [
+        "The only limit to our realization of tomorrow is our doubts of today.",
+        "Do what you can, with what you have, where you are.",
+        "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+        "The harder you work for something, the greater you'll feel when you achieve it."
+    ]
+    random_quote = random.choice(quotes)
+    current_datetime = datetime.now()
     form = UserForm()
-    return render(request, 'home.html', {'form': form})
+    context = {
+        'form': form,
+        'quote': random_quote,
+        'current_datetime': current_datetime
+    }
+    return render(request, 'home.html', context)
 
 
 def submit_form(request):
@@ -26,7 +38,6 @@ def submit_form(request):
     else:
         form = UserForm()
     return render(request, 'home.html', {'form': form})
-
 
 
 def view_submissions(request):

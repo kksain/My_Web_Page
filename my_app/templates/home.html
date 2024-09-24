@@ -138,6 +138,8 @@
 
     <main>
         <p>Welcome to my website! This is the main content area.</p>
+        <p><strong>Today's Quote:</strong> "{{ quote }}"</p>
+        <p><strong>Current Date/Time:</strong> {{ current_datetime }}</p>
 
         <form action="/submit" method="POST">
             {% csrf_token %}
